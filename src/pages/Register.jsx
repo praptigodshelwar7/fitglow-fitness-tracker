@@ -43,14 +43,14 @@ function Register() {
         <form onSubmit={handleRegister} className="space-y-4">
 
         <input
-            name="name"
+            autocomplete="name"
             placeholder="Name"
             className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
         />
 
         <input
-            name="email"
+            autocomplete="email"
             type="email"
             placeholder="Email"
             className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -58,7 +58,7 @@ function Register() {
         />
 
         <input
-            name="password"
+            autocomplete="new-password"
             type="password"
             placeholder="Password"
             className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
