@@ -127,7 +127,7 @@ function Dashboard() {
 
     fetchStats();
   }, [location.pathname]);
-
+  return(
   <>
   <Navbar />
 
@@ -243,6 +243,7 @@ function Dashboard() {
 
   </div>
 </>
+  )
 
 
 }
