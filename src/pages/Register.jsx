@@ -32,51 +32,58 @@ function Register() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="bg-gray-800 p-10 rounded-xl shadow-xl w-full max-w-md border border-gray-700">
-            
-        <form
-            onSubmit={handleRegister}
-            className="bg-white p-8 rounded-2xl shadow-lg w-96">
-            <h2 className="text-2xl font-bold text-blue-600 mb-4 text-center">
-                Create Account 
-            </h2>
-            <input
+        <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 flex items-center justify-center px-4">
+
+        <div className="w-full max-w-sm bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-6 sm:p-8">
+
+        <h2 className="text-xl sm:text-2xl font-bold text-blue-400 mb-6 text-center">
+        Create Account 🚀
+        </h2>
+
+        <form onSubmit={handleRegister} className="space-y-4">
+
+        <input
             name="name"
-            placeholder='Name'
-            className='w-full border p-2 rounded mb-3'
+            placeholder="Name"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
-            />
-            <input
+        />
+
+        <input
             name="email"
             type="email"
-            placeholder='Email'
-            className='w-full border p-2 rounded mb-3'
+            placeholder="Email"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
-            />
-            <input
+        />
+
+        <input
             name="password"
             type="password"
             placeholder="Password"
-            className="w-full border p-2 rounded mb-4"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
-            />
+        />
 
-            <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-800">
-                Register
-            </button>
+        <button
+            className="w-full bg-blue-600 hover:bg-blue-700 transition py-2.5 rounded-lg text-white font-semibold tracking-wide"
+        >
+            Register
+        </button>
 
         </form>
-        
+
         <p className="text-gray-400 text-sm mt-5 text-center">
-            Already have an account?{" "}
-            <Link to="/" className="text-blue-400 hover:underline">
+        Already have an account?{" "}
+        <Link to="/" className="text-blue-400 hover:underline font-semibold">
             Login
-            </Link>
+        </Link>
         </p>
-        </div>
-        </div>
-    )
+
+    </div>
+    </div>
+);
+
 }
 
 export default Register

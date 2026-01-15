@@ -128,119 +128,122 @@ function Dashboard() {
     fetchStats();
   }, [location.pathname]);
 
-  return (
   <>
-    <Navbar />
+  <Navbar />
 
-    <div className="p-6 max-w-6xl mx-auto text-white">
+  <div className="p-4 sm:p-6 max-w-6xl mx-auto text-white">
 
+    {/* STAT CARDS */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
 
-        {/* STAT CARDS */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-
-        {/* STREAK */}
-        <div className="bg-gray-900 border border-gray-700 p-5 rounded-2xl shadow-lg
-                        hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <p className="text-gray-300">Workout Streak</p>
-          <p className="text-3xl font-bold mt-2 text-orange-400">🔥 {streak} days</p>
-        </div>
-
-        {/* TOTAL WORKOUTS */}
-        <div className="bg-gray-900 border border-gray-700 p-5 rounded-2xl shadow-lg
-                        hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <p className="text-gray-300">Total Workouts</p>
-          <p className="text-3xl font-bold mt-2 text-blue-400">{workoutCount}</p>
-        </div>
-
-        {/* PROTEIN */}
-        <div className="bg-gray-900 border border-gray-700 p-5 rounded-2xl shadow-lg
-                        hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <p className="text-gray-300">Protein Today</p>
-          <p className="text-3xl font-bold mt-2 text-green-400">{proteinToday} g</p>
-        </div>
-
-        {/* ACTIVE DAYS */}
-        <div className="bg-gray-900 border border-gray-700 p-5 rounded-2xl shadow-lg
-                        hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-          <p className="text-gray-300">Active Days</p>
-          <p className="text-3xl font-bold mt-2 text-purple-400">
-            {chartData ? chartData.datasets[0].data.filter(v => v > 0).length : 0} / 7
-          </p>
-        </div>
-
-      </div>
-      {/* PROTEIN GOAL BAR */}
-      <div className="bg-gray-900 border border-gray-700 p-6 rounded-2xl shadow-lg mb-10">
-
-        <div className="flex justify-between mb-2">
-          <p className="text-gray-300 font-medium">Daily Protein Goal</p>
-          <p className="text-sm text-gray-400">
-            {proteinToday}g / {PROTEIN_GOAL}g
-          </p>
-        </div>
-
-        <div className="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
-        <div className="h-4 bg-gradient-to-r from-green-400 to-emerald-500 transition-all duration-500"
-          style={{ width: `${proteinPercent}%` }}></div>
-        </div>
-
-        <p className="mt-2 text-sm text-gray-400">
-          {proteinPercent >= 100 ? "Goal Achieved 🎉" : `${proteinPercent}% completed`}
+      <div className="bg-gray-900 border border-gray-700 p-4 sm:p-5 rounded-2xl shadow-lg">
+        <p className="text-gray-300 text-sm">Workout Streak</p>
+        <p className="text-2xl sm:text-3xl font-bold mt-1 text-orange-400">
+          🔥 {streak} days
         </p>
-
       </div>
 
-    {/* TODAY PLAN */}
-      <div className="bg-gray-900 border border-gray-700 p-6 rounded-2xl shadow-lg mb-10">
-        <p className="text-gray-400 mb-1">Today’s Workout Plan</p>
-
-        <div className="flex justify-between items-center">
-          <p className="text-2xl font-bold text-blue-400">
-            {todayPlan || "Loading..."}
-          </p>
-
-      <button
-        onClick={() => navigate("/add-workout", {
-        state: { exercise: todayPlan },
-      })}
-        className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition">
-        Start Workout 💪
-      </button>
+      <div className="bg-gray-900 border border-gray-700 p-4 sm:p-5 rounded-2xl shadow-lg">
+        <p className="text-gray-300 text-sm">Total Workouts</p>
+        <p className="text-2xl sm:text-3xl font-bold mt-1 text-blue-400">
+          {workoutCount}
+        </p>
       </div>
 
+      <div className="bg-gray-900 border border-gray-700 p-4 sm:p-5 rounded-2xl shadow-lg">
+        <p className="text-gray-300 text-sm">Protein Today</p>
+        <p className="text-2xl sm:text-3xl font-bold mt-1 text-green-400">
+          {proteinToday} g
+        </p>
       </div>
 
-
-      {/* CHART CONTAINER */}
-      <div className="bg-gray-900 border border-gray-700 p-6 rounded-2xl shadow-lg">
-
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold text-lg text-gray-100">Workouts This Week</h3>
-          <span className="text-sm text-gray-400">Last 7 days</span>
-        </div>
-
-        <div className="h-[320px]">
-          {chartData && (
-            <Bar
-              data={chartData}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                  y: { beginAtZero: true, ticks: { color: "#e5e7eb" } },
-                  x: { ticks: { color: "#e5e7eb" } },
-                },
-              }}
-            />
-          )}
-        </div>
-
+      <div className="bg-gray-900 border border-gray-700 p-4 sm:p-5 rounded-2xl shadow-lg">
+        <p className="text-gray-300 text-sm">Active Days</p>
+        <p className="text-2xl sm:text-3xl font-bold mt-1 text-purple-400">
+          {chartData ? chartData.datasets[0].data.filter(v => v > 0).length : 0} / 7
+        </p>
       </div>
 
     </div>
-  </>
-);
+
+    {/* PROTEIN GOAL BAR */}
+    <div className="bg-gray-900 border border-gray-700 p-5 sm:p-6 rounded-2xl shadow-lg mb-8">
+
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1">
+        <p className="text-gray-300 font-medium">Daily Protein Goal</p>
+        <p className="text-sm text-gray-400">
+          {proteinToday}g / {PROTEIN_GOAL}g
+        </p>
+      </div>
+
+      <div className="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
+        <div
+          className="h-4 bg-gradient-to-r from-green-400 to-emerald-500 transition-all duration-500"
+          style={{ width: `${proteinPercent}%` }}
+        ></div>
+      </div>
+
+      <p className="mt-2 text-sm text-gray-400">
+        {proteinPercent >= 100 ? "Goal Achieved 🎉" : `${proteinPercent}% completed`}
+      </p>
+    </div>
+
+    {/* TODAY PLAN */}
+    <div className="bg-gray-900 border border-gray-700 p-5 sm:p-6 rounded-2xl shadow-lg mb-8">
+
+      <p className="text-gray-400 mb-1 text-sm">Today’s Workout Plan</p>
+
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <p className="text-xl sm:text-2xl font-bold text-blue-400">
+          {todayPlan || "Loading..."}
+        </p>
+
+        <button
+          onClick={() =>
+            navigate("/add-workout", { state: { exercise: todayPlan } })
+          }
+          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition w-full sm:w-auto"
+        >
+          Start Workout 💪
+        </button>
+      </div>
+
+    </div>
+
+    {/* CHART */}
+    <div className="bg-gray-900 border border-gray-700 p-4 sm:p-6 rounded-2xl shadow-lg">
+
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="font-semibold text-base sm:text-lg text-gray-100">
+          Workouts This Week
+        </h3>
+        <span className="text-xs sm:text-sm text-gray-400">
+          Last 7 days
+        </span>
+      </div>
+
+      <div className="h-[260px] sm:h-[320px]">
+        {chartData && (
+          <Bar
+            data={chartData}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                y: { beginAtZero: true, ticks: { color: "#e5e7eb" } },
+                x: { ticks: { color: "#e5e7eb" } },
+              },
+            }}
+          />
+        )}
+      </div>
+
+    </div>
+
+  </div>
+</>
+
 
 }
 

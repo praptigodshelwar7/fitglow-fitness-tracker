@@ -10,15 +10,33 @@ export default function Workouts() {
 
     useEffect(() => {
     const fetchData = async () => {
-        const user = await account.get();
-        const res = await databases.listDocuments(DB_ID, WORKOUTS_ID, [
+    const user = await account.get();
+
+    const res = await databases.listDocuments(DB_ID, WORKOUTS_ID, [
         Query.equal("userId", user.$id),
         Query.orderDesc("date"),
     ]);
-    setWorkouts(res.documents);
+
+    const today = new Date().toDateString();
+
+    const todayWorkouts = res.documents.filter(
+        (w) => new Date(w.date).toDateString() === today
+    );
+
+    const oldWorkouts = res.documents.filter(
+        (w) => new Date(w.date).toDateString() !== today
+    );
+
+    for (let w of oldWorkouts) {
+        await databases.deleteDocument(DB_ID, WORKOUTS_ID, w.$id);
+    }
+
+    setWorkouts(todayWorkouts);
     };
+
     fetchData();
 }, []);
+
 
     const handleDelete = async (id) => {
         try {

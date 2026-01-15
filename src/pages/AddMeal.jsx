@@ -40,38 +40,46 @@ export default function AddMeal() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="p-6 max-w-lg mx-auto text-green-800">
-        <h2 className="text-xl font-bold mb-4">Add Meal </h2>
+  <>
+    <Navbar />
 
-        <form onSubmit={handleSave} className="bg-gray-800 p-6 rounded-xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 flex items-center justify-center px-4">
+
+      <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-5 sm:p-6">
+
+        <h2 className="text-xl sm:text-2xl font-bold text-green-400 mb-6 text-center">
+          Add Your Meal 🥗
+        </h2>
+
+        <form onSubmit={handleSave} className="space-y-4">
 
           <input
             placeholder="Food (e.g. Egg, Paneer, Dal)"
             value={food}
             onChange={(e) => setFood(e.target.value)}
-            className="w-full mb-3 p-2 bg-gray-900 text-white rounded"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <input
+            type="number"
             placeholder="Protein (grams)"
             value={protein}
             onChange={(e) => setProtein(e.target.value)}
-            className="w-full mb-3 p-2 bg-gray-900 text-white rounded"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <input
+            type="number"
             placeholder="Calories (optional)"
             value={calories}
             onChange={(e) => setCalories(e.target.value)}
-            className="w-full mb-4 p-2 bg-gray-900 text-white rounded"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <select
             value={mealType}
             onChange={(e) => setMealType(e.target.value)}
-            className="w-full mb-4 p-2 bg-gray-900 text-white rounded"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option>Breakfast</option>
             <option>Lunch</option>
@@ -79,11 +87,17 @@ export default function AddMeal() {
             <option>Snack</option>
           </select>
 
-          <button className="w-full bg-green-600 py-2 rounded text-white">
+          <button
+            className="w-full bg-green-600 hover:bg-green-700 transition py-2.5 rounded-lg text-white font-semibold tracking-wide"
+          >
             Save Meal
           </button>
+
         </form>
+
       </div>
-    </>
-  );
+    </div>
+  </>
+);
+
 }

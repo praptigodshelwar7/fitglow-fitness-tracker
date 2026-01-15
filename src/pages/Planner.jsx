@@ -76,47 +76,54 @@ export default function Planner() {
     <>
         <Navbar />
 
-        <div className="p-6 max-w-3xl mx-auto text-white">
+        <div className="p-4 sm:p-6 max-w-3xl mx-auto text-white">
 
-        <h2 className="text-2xl font-extrabold text-blue-400 mb-6">
-            Weekly Workout Planner 🗓️
+        <h2 className="text-xl sm:text-2xl font-extrabold text-blue-400 mb-6 text-center sm:text-left">
+        Weekly Workout Planner 🗓️
         </h2>
 
-        <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 space-y-4 shadow-lg">
+        <div className="bg-gray-900 border border-gray-700 rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg">
 
-            {[
-            ["mon", "Monday"],
-            ["tue", "Tuesday"],
-            ["wed", "Wednesday"],
-            ["thurs", "Thursday"],
-            ["fri", "Friday"],
-            ["sat", "Saturday"],
-            ["sun", "Sunday"],
-            ].map(([key, label]) => (
-            <div key={key} className="flex items-center gap-4">
-                <span className="w-24 text-gray-300">{label}</span>
+        {[
+        ["mon", "Monday"],
+        ["tue", "Tuesday"],
+        ["wed", "Wednesday"],
+        ["thurs", "Thursday"],
+        ["fri", "Friday"],
+        ["sat", "Saturday"],
+        ["sun", "Sunday"],
+        ].map(([key, label]) => (
+        <div
+            key={key}
+            className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
+        >
+            <span className="text-gray-300 text-sm sm:w-28">
+            {label}
+            </span>
 
-                <input
-                name={key}
-                value={plan[key]}
-                onChange={handleChange}
-                placeholder="Chest / Back / Legs..."
-                className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2
-                            text-white focus:outline-none focus:border-blue-500"
-                />
-            </div>
-        ))}
+            <input
+            name={key}
+            value={plan[key]}
+            onChange={handleChange}
+            placeholder="Chest / Back / Legs..."
+            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5
+                    text-white focus:outline-none focus:border-blue-500"
+            />
+        </div>
+    ))}
 
         <button
-            onClick={handleSave}
-            className="mt-6 w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg
-                    font-semibold transition shadow-lg" >
-            Save Plan 
-        </button>
-
-        </div>
+        onClick={handleSave}
+        className="mt-6 w-full bg-blue-600 hover:bg-blue-700 py-2.5 rounded-lg
+                font-semibold transition shadow-lg"
+    >
+        Save Plan 🔥
+    </button>
 
     </div>
-    </>
+
+    </div>
+</>
+
 );
 }

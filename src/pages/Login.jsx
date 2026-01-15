@@ -30,37 +30,49 @@ function Login() {
     
 
     return (
-        <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="bg-gray-800 p-10 rounded-xl shadow-xl w-full max-w-md border border-gray-700">
-            <form
-                onSubmit={handleLogin}
-                className="bg-white p-8 rounded-2xl shadow-lg w-96" >
-                <h2 className="text-2xl font-bold text-blue-600 mb-4 text-center">
-                    Welcome Back 
-                </h2>
-                <input
-                type="email"
-                placeholder="Email"
-                className="w-full border p-2 rounded mb-3"
-                onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                type="password"
-                placeholder="Password"
-                className="w-full border p-2 rounded mb-4"
-                onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-800">
-                    Login
-                </button>
-                <p className="text-sm mt-3 text-center">
-                    No account ? {" "}
-                    <Link to="/register" className="text-blue-600 font-semibold">Register</Link>
-                    </p>
-            </form>
-        </div>
-        </div>
-    )
+        <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 flex items-center justify-center px-4">
+
+        <div className="w-full max-w-sm bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-6 sm:p-8">
+
+        <h2 className="text-xl sm:text-2xl font-bold text-blue-400 mb-6 text-center">
+        Welcome Back 💪
+        </h2>
+
+        <form onSubmit={handleLogin} className="space-y-4">
+
+        <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button
+            className="w-full bg-blue-600 hover:bg-blue-700 transition py-2.5 rounded-lg text-white font-semibold tracking-wide"
+        >
+            Login
+        </button>
+
+        <p className="text-sm text-center text-gray-400 pt-2">
+            No account?{" "}
+            <Link to="/register" className="text-blue-400 font-semibold hover:underline">
+            Register
+            </Link>
+        </p>
+
+        </form>
+    </div>
+
+    </div>
+);
+
 }
 
 export default Login
