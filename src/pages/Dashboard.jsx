@@ -121,15 +121,17 @@ function Dashboard() {
 
 
         } catch (err) {
+        navigate("/");
         console.log("Dashboard error:", err);
         }
     };
 
     fetchStats();
   }, [location.pathname]);
+
   return(
-  <>
-  <Navbar />
+      <>
+      <Navbar />
 
   <div className="p-4 sm:p-6 max-w-6xl mx-auto text-white">
 

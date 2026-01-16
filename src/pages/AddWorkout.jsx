@@ -83,7 +83,7 @@ export default function AddWorkout() {
             className="w-full px-4 py-2.5 bg-slate-800 text-white rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select Exercise</option>
-            {exercises.slice(0, 20).map((e) => (
+            {Array.isArray(exercises) && exercises.slice(0, 20).map((e) => (
               <option key={e.id} value={e.name}>
                 {e.name}
               </option>
