@@ -17,7 +17,7 @@ https://fitglow-fitness-tracker.vercel.app
 
 ### Frontend (React)
 
-- Functional components with React Hooks (`useState`, `useEffect`)
+- Functional components with React Hooks
 - Component-based architecture for modular UI
 - Controlled forms for workout and meal input
 - Centralized authentication checks using session validation
