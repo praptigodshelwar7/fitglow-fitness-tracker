@@ -1,16 +1,84 @@
-# React + Vite
+# FitGlow — Full Stack Fitness Tracker (React + Appwrite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FitGlow is a full-stack fitness tracking web application built using React (Vite) on the frontend and Appwrite as the backend service.  
+It allows users to track workouts, diet, protein intake, and manage weekly workout plans with secure authentication and real-time database updates.
 
-Currently, two official plugins are available:
+The project focuses on daily activity tracking, streak calculation, weekly analytics, and personalized workout planning.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://fitglow-fitness-tracker.vercel.app
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Core Concepts Implemented
+
+### Frontend (React)
+
+- Functional components with React Hooks
+- Component-based architecture for modular UI
+- Controlled forms for workout and meal input
+- Centralized authentication checks using session validation
+- Dynamic routing using React Router (SPA architecture)
+- Conditional rendering based on authentication state
+- Reusable UI components (Navbar, Cards, Forms)
+- State-driven UI updates after CRUD operations
+- Chart visualization using Chart.js
+- Responsive UI using Tailwind CSS utility classes
+
+### Backend (Appwrite BaaS)
+
+- Email and password authentication
+- Session-based login management
+- Database collections with document-based storage
+- User-specific document filtering using queries
+- Secure CRUD operations through Appwrite SDK
+
+---
+
+## Authentication Flow (Appwrite)
+
+Authentication is implemented using Appwrite Account API:
+
+- User Registration:
+  - `account.create()`
+  - `account.createEmailPasswordSession()`
+
+- User Login:
+  - `account.createEmailPasswordSession()`
+
+- Session Validation:
+  - `account.get()` used to protect private routes
+
+- Logout:
+  - `account.deleteSession("current")`
+
+Unauthenticated users are redirected to the Login page when accessing protected routes.
+
+---
+
+## Database Design (Appwrite)
+
+### Collections Used
+
+| Collection       | Purpose                         |
+|------------------|----------------------------------|
+| workouts          | Stores daily workout entries     |
+| meals             | Stores diet and protein intake   |
+| workout_plans     | Weekly workout planner data      |
+| goals             | Reserved for future features     |
+
+### Common Fields
+
+Each document includes:
+
+- `userId`
+- `date`
+- activity-specific fields
+
+This allows user-specific data fetching using:
+
+```js
+Query.equal("userId", user.$id)
