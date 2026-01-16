@@ -29,7 +29,7 @@ export default function AddMeal() {
         protein: Number(protein),
         calories: Number(calories || 0),
         mealType,
-        date: new Date().toISOString(),
+        date: new Date().toDateString(),
       });
 
       navigate("/diet");

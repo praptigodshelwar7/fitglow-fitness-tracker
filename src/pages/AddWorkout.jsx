@@ -40,7 +40,7 @@ export default function AddWorkout() {
         reps: Number(form.reps),
         weight: Number(form.weight),
         muscle,
-        date: new Date().toISOString(),
+        date: new Date().toDateString(),
     });
 
     navigate("/workouts");

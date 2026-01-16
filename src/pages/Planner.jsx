@@ -62,7 +62,7 @@ export default function Planner() {
         await databases.createDocument(DB_ID, PLANS_ID, ID.unique(), {
             ...plan,
             userId: user.$id,
-            createdAt: new Date().toISOString(),
+            createdAt: new Date().toDateString(),
         });
     }
 
